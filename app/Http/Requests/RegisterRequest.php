@@ -25,13 +25,13 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'string', 'min:2'],
-            'address' => ['required', 'string', 'min: 3'],
+            'name' => ['required', 'string', 'min:3'],
+            'address' => ['required', 'string', 'min: 5'],
             'phone' => ['required', 'string', 'min: 11', 'max: 15'],
             'email' => ['required', 'email', 'string', 'unique:users,email'],
             'password' => [
-                'required',
                 'confirmed',
+                'required',
                 Password::min(8)->mixedCase()->numbers()->symbols()
             ] 
         ];
