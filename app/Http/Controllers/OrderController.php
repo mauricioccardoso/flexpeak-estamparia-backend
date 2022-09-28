@@ -19,7 +19,8 @@ class OrderController extends Controller
 
     public function index(Request $request)
     {
-        return User::all();
+        $user = $request->user();
+        return Order::with('items')->where('user_id', $user->id)->get();
     }
 
     public function store(OrderRequest $request)
